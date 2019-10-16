@@ -1,0 +1,35 @@
+<div class="col-md-4 offset-4 mt-5 mb-5 card card-body">
+    <form action="" [formGroup]="form" (ngSubmit)="loginData(form)">
+        <h1 class="text-center text-dark">Add Movie</h1>
+      <div class="form-group">
+         <input type="text" name="movie" id="movie" class="form-control" placeholder="Add Movie.." formControlName="movie">
+         <div *ngIf="movie.touched && movie.invalid">
+             <p *ngIf ="movie.errors.required" class="text-danger">*this field is required</p>
+         </div>
+      </div>
+      <div class="form-group">
+        <input type="text" name="title" id="title" class="form-control" placeholder="Movie Title..." formControlName="title">
+        <div *ngIf="title.touched && title.invalid">
+            <p *ngIf ="title.errors.required" class="text-danger">*this field is required</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" name="img" id="img" class="form-control" placeholder="Image Url" formControlName="img">
+        <div *ngIf="img.touched && img.invalid">
+            <p *ngIf ="img.errors.required" class="text-danger">*this field is required</p>
+        </div>
+      </div>
+      <div class="form-group">
+       <textarea name="desc" id="desc" cols="40" rows="5" formControlName="desc" placeholder ="Movie Description" class="form-control"></textarea>
+        <div *ngIf="desc.touched && desc.invalid">
+            <p *ngIf ="desc.errors.required" class="text-danger">*this field is required</p>
+        </div>
+      </div>
+      <div class="form-group">
+          <button type="submit" class="btn btn-outline-primary float-right " [disabled]="form.invalid">ADD</button>
+      </div>
+    </form>
+     
+  
+  </div>
+  
