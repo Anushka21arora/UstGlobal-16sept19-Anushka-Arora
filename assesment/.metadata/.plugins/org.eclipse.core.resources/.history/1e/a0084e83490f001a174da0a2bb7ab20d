@@ -1,0 +1,9 @@
+package com.ustgloabl.phonesimulatorapp;
+
+public class App {
+public static void main(String[] args) {
+	System.out.println("Press 1 to show all Contacts");
+	System.out.println("Press 2 to search for contact");
+	System.out.println("press 3 to operate on contact");
+}
+}

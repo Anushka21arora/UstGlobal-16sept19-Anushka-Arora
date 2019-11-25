@@ -1,0 +1,5 @@
+package com.ustglobal.phonesimulator.appdto;
+
+public class PhoneSimulatorDto {
+
+}

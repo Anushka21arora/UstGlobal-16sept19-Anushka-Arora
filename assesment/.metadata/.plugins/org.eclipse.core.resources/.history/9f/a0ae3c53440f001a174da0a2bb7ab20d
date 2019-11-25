@@ -1,0 +1,5 @@
+package com.ustglobal.phonesimulatorapp.dao;
+
+public interface PhoneSimulatorDao {
+
+}

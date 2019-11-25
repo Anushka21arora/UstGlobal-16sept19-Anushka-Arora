@@ -1,0 +1,27 @@
+package com.ustglobal.phonesimulatorapp.dao;
+
+import java.sql.ResultSet;
+import java.util.List;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
+import com.ustglobal.phonesimulatorapp.dto.PhoneSimulatorDto;
+
+public class PhoneSimulatorDaoImpl implements PhoneSimulatorDao {
+
+	@Override
+	public List<PhoneSimulatorDto> searchAllContact() {
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs= null;
+		String url ="jdbc:mysql://localhost:3309/contactfile?user=root&password=root";
+		String sql="select * from contact";
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+
+}

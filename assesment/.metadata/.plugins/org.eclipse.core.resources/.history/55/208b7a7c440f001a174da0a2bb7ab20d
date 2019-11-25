@@ -1,0 +1,7 @@
+package com.ustglobal.phonesimulatorapp.dao;
+
+import com.ustglobal.phonesimulatorapp.dto.PhoneSimulatorDto;
+
+public class PhoneSimulatorDaoImpl implements PhoneSimulatorDto {
+
+}

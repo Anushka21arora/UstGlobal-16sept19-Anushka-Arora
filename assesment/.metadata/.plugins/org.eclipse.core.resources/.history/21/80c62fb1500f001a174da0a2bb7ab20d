@@ -1,0 +1,74 @@
+package com.ustgloabl.phonesimulatorapp;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.ustglobal.phonesimulatorapp.dao.PhoneSimulatorDao;
+import com.ustglobal.phonesimulatorapp.dto.PhoneSimulatorDto;
+import com.ustglobal.phonesimulatorapp.util.PhoneSimulatorFactory;
+
+public class App {
+	public static void main(String[] args) {
+		
+		
+		System.out.println("Press 1 to show all Contacts");
+		System.out.println("Press 2 to search for contact");
+		System.out.println("press 3 to operate on contact");
+	
+		Scanner scn = new Scanner(System.in);
+		int num = scn.nextInt();
+		
+		switch(num) {
+		case 1:
+			    
+			   PhoneSimulatorDao dao = PhoneSimulatorFactory.getPhoneSimulator();
+			    List<PhoneSimulatorDto> list =dao.showAllContact();
+			       for (PhoneSimulatorDto phoneSimulatorDto : list) {
+					System.out.println("Name is :"+phoneSimulatorDto.getName());
+				    System.out.println("Number is :"+ phoneSimulatorDto.getNumber());
+				    System.out.println("Group is :"+phoneSimulatorDto.getGroups());
+			       
+			       }
+			    
+			    break;
+		case 2: 
+			System.out.println("Enter the Name");
+			String name = scn.next();
+			
+			PhoneSimulatorDao dao1 = PhoneSimulatorFactory.getPhoneSimulator();
+			PhoneSimulatorDto dto1 =dao1.searchContact(name);
+			System.out.println("Name is :"+dto1.getName());
+			System.out.println("Number is :"+dto1.getNumber());
+			System.out.println("groups is :"+dto1.getGroups());
+			
+			
+			System.out.println("Press 1 to call");
+			System.out.println("Press 2 to message");
+			System.out.println("press 3 to go back to main menu");
+			
+			
+			int value = scn.nextInt();
+			switch(value) {
+			case 1 :
+				System.out.println("Calling to "+dto1.getName());
+				System.out.println("end call");
+				break;
+			case 2 :
+				System.out.println("Enter the message");
+				String msg =scn.next();
+				System.out.println("Sending the message....");
+				break;
+				
+			case 3:
+				System.out.println("Press 1 to show all Contacts");
+				System.out.println("Press 2 to search for contact");
+				System.out.println("press 3 to operate on contact");
+				break;
+			}
+			
+			
+			break;
+		}
+		
+	}
+}

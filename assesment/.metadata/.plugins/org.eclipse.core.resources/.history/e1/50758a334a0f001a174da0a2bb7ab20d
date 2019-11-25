@@ -1,0 +1,11 @@
+package com.ustglobal.phonesimulatorapp.dao;
+
+
+
+import java.util.List;
+
+import com.ustglobal.phonesimulatorapp.dto.PhoneSimulatorDto;
+
+public interface PhoneSimulatorDao {
+   public List<PhoneSimulatorDto> showAllContact();
+}

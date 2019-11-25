@@ -1,0 +1,105 @@
+package com.ustglobal.phonesimulatorapp.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+
+import com.ustglobal.phonesimulatorapp.dto.PhoneSimulatorDto;
+
+public class PhoneSimulatorDaoImpl implements PhoneSimulatorDao {
+
+	@Override
+	public List<PhoneSimulatorDto> showAllContact() {
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		String url = "jdbc:mysql://localhost:3306/contactfile?user=root&password=root";
+		String sql = "select * from contact";
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url);
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			ArrayList<PhoneSimulatorDto> result = new ArrayList<PhoneSimulatorDto>();
+			while (rs.next()) {
+				PhoneSimulatorDto dto = new PhoneSimulatorDto();
+				String name = rs.getString("name");
+				dto.setName(name);
+				int number = rs.getInt("number");
+				dto.setNumber(number);
+				String groups = rs.getString("groups");
+				dto.setGroups(groups);
+
+				result.add(dto);
+			}
+			return result;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				if (conn != null)
+					conn.close();
+				if (stmt != null)
+					stmt.close();
+				if (rs != null)
+					rs.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+
+		}
+	}//end of showAllContacts()
+
+	@Override
+	public PhoneSimulatorDto searchContact(String name) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String url = "jdbc:mysql://localhost:3306/contactfile?user=root&password=root";
+		String sql = "select * from contact where name =?";
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url);
+		     pstmt = conn.prepareStatement(sql);
+		     rs=pstmt.executeQuery();
+		     pstmt.setString(1, name);
+		     PhoneSimulatorDto dto1 = new PhoneSimulatorDto();
+		     if(rs.next()) {
+		    	 String name1 = rs.getString("name");
+					dto1.setName(name1);
+					int number1 = rs.getInt("number");
+					dto1.setNumber(number1);
+					String groups1 = rs.getString("groups");
+					dto1.setGroups(groups1);
+
+		    	 
+		     }
+		     
+			return PhoneSimulatorDto;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			try {
+				if (conn != null)
+					conn.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (rs != null)
+					rs.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+
+}
+
