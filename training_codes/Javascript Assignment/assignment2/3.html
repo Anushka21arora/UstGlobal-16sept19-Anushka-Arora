@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>circle</title>
+</head>
+<body>
+    <script>
+        //Named Function
+       function circle(rad)
+       {
+           var cirum = 2*3.14*rad;
+           return cirum;
+       }   
+       var result = circle(4);
+       console.log('cirumference =',result);
+
+       //Function Expression
+       var circle1 = function (rad)
+       {
+           var cirum = 2*3.14*rad;
+           return cirum;
+       }   
+       var result = circle1(4);
+       console.log('cirumference =',result);
+
+       //self invoked Function
+      ( function (rad)
+       {
+           var cirum = 2*3.14*rad;
+           console.log('cirumference =',cirum);
+       } )(4);
+
+       //fat arrow Function
+       var circle2 = rad =>
+       {
+           var cirum = 2*3.14*rad;
+           console.log('cirumference =',cirum);
+       } 
+       circle2(4);
+
+       
+
+
+
+    </script>
+</body>
+</html>

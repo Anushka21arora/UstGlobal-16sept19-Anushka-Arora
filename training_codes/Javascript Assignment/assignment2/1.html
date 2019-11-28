@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    <script>
+       //Named function
+        function factorial(num)
+        {
+             var fact=1; 
+            for(var i=num;i>1;i--)
+               {
+               fact = fact * i;
+               }
+            return fact;
+        }
+         var result = factorial(5);
+         console.log('factorial =',result);
+
+         //function expression
+        var res = function (num)
+        {
+             var fact=1; 
+            for(var i=num;i>1;i--)
+               {
+               fact = fact * i;
+               }
+            return fact;
+        }
+         var result1 = res(5);
+         console.log('factorial =',result1);
+
+         //self invoked function
+
+        ( function(num)
+        {
+             var fact=1; 
+            for(var i=num;i>1;i--)
+               {
+               fact = fact * i;
+               }
+               console.log('factorial =',fact);
+        })(5);
+        
+        //fat arrow function
+
+
+       var a = num => {
+             var fact=1; 
+            for(var i=num;i>1;i--)
+               {
+               fact = fact * i;
+               }
+               console.log('factorial =',fact);
+        } 
+        a(5);
+         
+
+    </script>
+</body>
+</html>

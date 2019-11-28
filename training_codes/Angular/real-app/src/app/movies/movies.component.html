@@ -1,0 +1,7 @@
+<input type="search" name="search" id="search" class="mt-5 mr-auto form-control col-md-6 offset-3" placeholder="Search by Movie Name...." (keyup)="getmovie($event)">
+
+<div class=" conatiner col-md-8 offset-2 card card-body " *ngFor= "let move of movies">
+    <img src="{{move.Poster}}" alt="">
+    <h1>{{move.Title}}</h1>
+  </div>
+  

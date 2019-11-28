@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //Named Function
+        function prime(num)
+       {
+          var count=0;
+          for(var i=1;i<=num;i++)
+          {
+           if(num % i == 0)
+            {
+               count++;
+               
+            if(count>2)
+            break;
+            }
+           }
+        
+if(count==2)
+{
+console.log('is prime',num);
+}
+else
+{
+console.log('not prime',num);
+}
+
+        
+}
+       
+prime(3);
+
+// function Expression
+ var prime1=function (num)
+       {
+          var count=0;
+          for(var i=1;i<=num;i++)
+          {
+           if(num % i == 0)
+            {
+               count++;
+               
+            if(count>2)
+            break;
+            }
+           }
+        
+if(count==2)
+{
+console.log('is prime',num);
+}
+else
+{
+console.log('not prime',num);
+}
+
+        
+}
+       
+prime1(3);
+
+//self invoked function
+(function (num)
+       {
+          var count=0;
+          for(var i=1;i<=num;i++)
+          {
+           if(num % i == 0)
+            {
+               count++;
+               
+            if(count>2)
+            break;
+            }
+           }
+        
+if(count==2)
+{
+console.log('is prime',num);
+}
+else
+{
+console.log('not prime',num);
+}
+})(3);
+
+//fat arrow function
+var prime3 = num =>
+       {
+          var count=0;
+          for(var i=1;i<=num;i++)
+          {
+           if(num % i == 0)
+            {
+               count++;
+               
+            if(count>2)
+            break;
+            }
+           }
+        
+if(count==2)
+{
+console.log('is prime',num);
+}
+else
+{
+console.log('not prime',num);
+}
+}
+prime3(3);
+
+
+
+
+    </script>
+</body>
+</html>

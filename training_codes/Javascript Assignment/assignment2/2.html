@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fibonacci</title>
+</head>
+<body>
+   
+    <script>
+        //Named function
+        function fib(num)
+        {
+           var a=1;
+           var b=-1;
+           for(var i=1;i<=num;i++)
+           {
+               c=a+b;
+               b=a;
+               a=c;
+              console.log(c);
+           }
+        }
+        fib(7);
+
+        //function expression
+       var fib1 = function(num)
+        {
+           var a=1;
+           var b=-1;
+           for(var i=1;i<=num;i++)
+           {
+               c=a+b;
+               b=a;
+               a=c;
+              console.log(c);
+           }
+        }
+        fib1(7);
+    
+
+        //self invoked function
+        (function(num)
+        {
+           var a=1;
+           var b=-1;
+           for(var i=1;i<=num;i++)
+           {
+               c=a+b;
+               b=a;
+               a=c;
+              console.log(c);
+           }
+        })(7);
+
+        //fat arrow function
+
+        var fib2 = num =>{
+           var a=1;
+           var b=-1;
+           for(var i=1;i<=num;i++)
+           {
+               c=a+b;
+               b=a;
+               a=c;
+              console.log(c);
+           }
+        }
+        fib2(7);
+
+
+    </script>
+</body>
+</html>

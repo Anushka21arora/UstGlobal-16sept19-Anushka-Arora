@@ -1,0 +1,28 @@
+@media screen and (oreintation:landscape) and(min-width:360px)and(max-width:360px){
+ 
+}
+ nav{
+     background-color: black;
+ }
+ #myimg{
+     border-radius: 50%;
+     width: 480px;
+     height: 480px;
+ }
+ .my{
+     margin-top: 50px;
+     padding:10px;
+ }
+ i{
+     margin-top:50px;
+    font-size:70px;
+ }
+ .my1{
+   text-align: center;
+   margin-top: 10px;
+ }
+ img{
+     height:50%;
+     width: 95%;
+     margin-left:11px;
+ }

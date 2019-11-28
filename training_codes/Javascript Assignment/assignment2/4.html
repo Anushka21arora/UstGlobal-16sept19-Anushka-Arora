@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Array</title>
+</head>
+<body>
+    <script>
+        //Named Function
+        function add(a)
+        {   var sum=0;
+            for(var i=0;i<array.length;i++){
+
+              sum=sum+a[i];
+
+            }
+            return sum;
+        }
+        var array=[10,20,30,40];
+        var result= add(array);
+        console.log('sum of array elemets are',result);
+
+
+        //Function Expression
+        var arr = function (a)
+        {   var sum=0;
+            for(var i=0;i<array.length;i++){
+
+              sum=sum+a[i];
+
+            }
+            return sum;
+        }
+        var array=[10,20,30,40];
+        var result= arr(array);
+        console.log('sum of array elemets are',result);
+
+        //self invoked function
+        var array=[10,20,30,40];
+        (function (a)
+        {   var sum=0;
+            for(var i=0;i<array.length;i++){
+
+              sum=sum+a[i];
+
+            }
+            console.log('sum of array elemets are',sum);
+
+        })(array);
+
+        //fat arrow Function
+
+       var ar = a =>
+        {   var sum=0;
+            for(var i=0;i<array.length;i++){
+
+              sum=sum+a[i];
+
+            }
+            console.log('sum of array elemets are',sum);
+
+        }
+        ar(array);
+      
+       
+
+
+        </script>
+    
+
+</body>
+</html>

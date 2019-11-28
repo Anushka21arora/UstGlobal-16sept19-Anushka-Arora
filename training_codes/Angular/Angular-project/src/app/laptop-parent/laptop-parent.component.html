@@ -1,0 +1,10 @@
+<div class="col-md-4 mt-3 card card-body float-left">
+    <div class="card card-body" *ngFor="let lappy of Laptops">
+     <img src="{{lappy.imgUrl}}" alt="" (click)="sendLappy(lappy)">
+     <h1 class="text-center">{{lappy.name}}</h1>
+    </div>
+</div>
+<app-laptop-child [lappy]="selectedLappy"></app-laptop-child>
+
+
+
