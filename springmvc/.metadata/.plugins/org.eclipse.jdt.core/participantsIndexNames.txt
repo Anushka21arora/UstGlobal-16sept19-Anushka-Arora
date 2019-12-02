@@ -1,0 +1,5 @@
+INDEX VERSION 1.130
+C:\Users\Vaibhav\eclipse-workspace-ust-springmvc-assesment\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3303489399.index
+\retailerwebapp\src\main\java
+C:\Users\Vaibhav\eclipse-workspace-ust-springmvc-assesment\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2432412118.index
+\retailerwebapp\src\main\resources

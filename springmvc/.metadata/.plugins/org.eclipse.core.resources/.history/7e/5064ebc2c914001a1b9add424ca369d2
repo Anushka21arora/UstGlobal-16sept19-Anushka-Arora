@@ -1,0 +1,29 @@
+package com.ustglobal.retailerwebapp.dto;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="order")
+public class Order {
+	@Id
+	@Column
+private int orderId;
+	@Column
+	@OneToMany(cascade= CascadeType.ALL)
+	private List<Product> productName;
+	@Column
+private int price;
+	@Column
+private double quantity;
+	@Column
+private double amount;
+	@Column
+private Retailer retailerId;
+}

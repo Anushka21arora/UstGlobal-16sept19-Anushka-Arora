@@ -1,0 +1,124 @@
+package com.ustglobal.retailerwebapp.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
+
+import com.ustglobal.retailerwebapp.dto.Order;
+import com.ustglobal.retailerwebapp.dto.Retailer;
+import com.ustglobal.retailerwebapp.repo.RetailerService;
+
+@Controller
+public class RetailerController {
+@Autowired
+private RetailerService service;
+
+@GetMapping("/login") 
+public String loginPage() {
+	return "login";
+}// end of loginPage()
+
+@PostMapping("/login")
+public String login(int id, String password, HttpServletRequest request) {
+	Retailer bean = service.login(id, password);
+	if (bean == null) {
+		request.setAttribute("msg", "Invalid credentials");
+		return "login";
+	} else {
+		HttpSession session = request.getSession();
+		session.setAttribute("bean", bean);
+		return "home";
+	}
+}// end of login()
+
+	@GetMapping("/createprofile")
+	public String profilePage() {
+		return "createprofile";
+	}
+
+	@PostMapping("/createprofile")
+	public String profilePage(Retailer bean, ModelMap map) {
+		boolean check = service.createProfile(bean);
+		if (check) {
+			map.addAttribute("msg", "Your profile is created Sucessfully");
+		} else {
+			map.addAttribute("msg", "Email is repeated");
+		}
+		return "login";
+	}// end of register()
+
+	@GetMapping("/home")
+	public String home(ModelMap map, @SessionAttribute(name = "bean", required = false) Retailer bean) {
+
+		if (bean == null) {
+			map.addAttribute("msg", "Login First!!!!");
+			return "login";
+		} else {
+			return "home";
+		}
+	}// end of home()
+
+	@PostMapping("/home")
+	public String home() {
+		return "home";
+	}
+
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "login";
+	}// end of logout()
+
+	@GetMapping("/updatepassword")
+	public String updatepassword(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if(session!=null) {
+			return "updatepassword";
+		}else {
+			return "login";
+		}
+	}//end of updatePassword()
+	@PostMapping("/updatepassword")
+	public String updatepassword(String password,String confirmpassword,@SessionAttribute(name="bean")Retailer bean,ModelMap map) {
+		if(password.equals(confirmpassword)) {
+			service.updatePassword(bean.getRetailerId(), password);
+			map.addAttribute("msg","password Changed");
+		}else {
+			map.addAttribute("msg", "password not Matching");
+			
+		}
+		return "home";
+	}//end of updatePassword
+
+	@GetMapping("/searchproduct")
+	public String searchpage(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if(session!=null) {
+			return "searchproduct";
+		}else {
+			return "login";
+		}
+	}//end of searchProduct()
+	
+	@GetMapping("/search")
+	public String search(@RequestParam("id") int id, ModelMap map) {
+		Order bean = service.searchProduct(id);
+		if (bean == null) {
+			map.addAttribute("msg", "Data Not Found!!!");
+		} else {
+			map.addAttribute("bean", bean);
+		}
+		return "home";
+	}// end of search()
+
+	
+	
+}

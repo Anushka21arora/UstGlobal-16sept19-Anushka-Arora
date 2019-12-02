@@ -1,0 +1,44 @@
+package com.ustglobal.retailerwebapp.dao;
+
+import com.ustglobal.retailerwebapp.dto.Order;
+import com.ustglobal.retailerwebapp.dto.Retailer;
+
+public class RetailerDaoImpl implements RetailerDao {
+
+	@Override
+	public boolean createProfile(Retailer bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Retailer login(int retailerId, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Order searchProduct(int productId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean updatePassword(int retailerId, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean payableAmount(Order order) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Order retrieve(int orderId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

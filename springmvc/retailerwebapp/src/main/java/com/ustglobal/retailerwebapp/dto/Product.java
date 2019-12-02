@@ -1,0 +1,53 @@
+package com.ustglobal.retailerwebapp.dto;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import net.bytebuddy.build.ToStringPlugin.Exclude;
+
+@Entity
+@Table(name = "product")
+public class Product {
+	@Column(unique=true)
+	private int productId;
+	@Id
+	@Column
+    private String productName;
+	@Exclude
+    @OneToMany(mappedBy="product")
+	private List<Order> orderList;
+	
+	
+
+	public List<Order> getOrderList() {
+		return orderList;
+	}
+
+	public void setOrderList(List<Order> orderList) {
+		this.orderList = orderList;
+	}
+
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+}

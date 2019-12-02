@@ -1,0 +1,6 @@
+package com.ustglobal.retailerwebapp.dto;
+
+public class Product {
+private int productId;
+
+}

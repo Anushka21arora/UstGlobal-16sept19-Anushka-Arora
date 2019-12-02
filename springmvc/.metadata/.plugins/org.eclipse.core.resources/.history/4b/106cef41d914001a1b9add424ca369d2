@@ -1,0 +1,93 @@
+package com.ustglobal.retailerwebapp.dao;
+
+import java.util.List;
+
+import javax.management.Query;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.TypedQuery;
+
+import org.springframework.stereotype.Repository;
+
+import com.ustglobal.retailerwebapp.dto.Order;
+import com.ustglobal.retailerwebapp.dto.Product;
+import com.ustglobal.retailerwebapp.dto.Retailer;
+
+@Repository
+public class RetailerDaoImpl implements RetailerDao {
+	@PersistenceUnit
+	private EntityManagerFactory factory;
+
+	@Override
+	public boolean createProfile(Retailer bean) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		transaction.begin();
+		try {
+			manager.persist(bean);
+			transaction.commit();
+		    return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+
+	@Override
+	public Retailer login(int retailerId, String password) {
+		String jpql="from Retailer where id=:rid and password=:password ";
+		EntityManager manager= factory.createEntityManager();
+		TypedQuery<Retailer> query = manager.createQuery(jpql, Retailer.class);
+		query.setParameter("id", retailerId);
+		query.setParameter("pass", password);
+		try {
+			Retailer retailer=query.getSingleResult();
+			return retailer;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+		
+	}
+
+	@Override
+	public Order searchProduct(int productId) {
+		EntityManager manager =factory.createEntityManager();
+		Order order = manager.find(Order.class,productId);
+		return order;
+	}
+
+	@Override
+	public boolean updatePassword(int retailerId, String password) {
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction =manager.getTransaction();
+		transaction.begin();
+		Retailer retailer=manager.find(Retailer.class, retailerId);
+		retailer.setPassword(password);
+		return true;
+	}
+
+	@Override
+	public double payableAmount(Order retailerId) {
+    EntityManager manager = factory.createEntityManager();
+    EntityTransaction transaction = manager.getTransaction();
+    transaction.begin();
+    
+   Order order=manager.find(Order.class,retailerId);
+   
+    return order.getAmount();
+	}
+
+	@Override
+	public Order retrieve(int retailerId) {
+		EntityManager manager = factory.createEntityManager();
+		List<Order> order =(List<Order>) manager.find(Order.class, retailerId);
+		return ;
+	}
+
+}
