@@ -1,0 +1,95 @@
+<h3 style="text-align: center;" class="mt-3"><u>List Of Products</u></h3>
+<table class="table table-bordered table-hover mt-4">
+    <thead class="thead-light">
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Category</th>
+        <th>Company</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Modify</th>
+    </thead>
+    <tbody>
+        <tr *ngFor='let pro of product'>
+            <td>{{pro.pid}}</td>
+            <td>{{pro.name}}</td>
+            <td>{{pro.category}}</td>
+            <td>{{pro.company}}</td>
+            <td>{{pro.qty}}</td>
+            <td>{{pro.price}}</td>
+            <td><button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal"
+                (click)="selectUser(pro)">
+               Modify
+              </button>
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Update Product</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body" *ngIf="selectedUser">
+                        <form action="" class="" #form="ngForm" (ngSubmit)="updateData(form)">
+                            <div class="form-group">
+                              <input type="number" name="bid" id="bid" class="form-control" placeholder="Enter ProductId"
+                                #pid="ngModel" ngModel required [(ngModel)]="selectedUser.pid">
+                              <div *ngIf="pid.touched && pid.invalid">
+                                <p class="alert alert-danger" *ngIf="pid.errors.required">*This field required</p>
+          
+                              </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="name" id="name" class="form-control" placeholder="Enter Product Name"
+                                  #name="ngModel" ngModel required [(ngModel)]="selectedUser.name">
+                                <div *ngIf="name.touched && name.invalid">
+                                  <p class="alert alert-danger" *ngIf="name.errors.required">*This field required</p>
+            
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <input type="text" name="category" id="category" class="form-control" placeholder="Enter category"
+                                  #category="ngModel" ngModel required [(ngModel)]="selectedUser.category">
+                                <div *ngIf="category.touched && category.invalid">
+                                  <p class="alert alert-danger" *ngIf="category.errors.required">*This field required</p>
+            
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <input type="text" name="company" id="company" class="form-control" placeholder="Enter company"
+                                  #company="ngModel" ngModel required [(ngModel)]="selectedUser.company">
+                                <div *ngIf="company.touched && company.invalid">
+                                  <p class="alert alert-danger" *ngIf="company.errors.required">*This field required</p>
+            
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <input type="number" name="qty" id="qty" class="form-control" placeholder="Enter Quantity"
+                                  #qty="ngModel" ngModel required [(ngModel)]="selectedUser.qty">
+                                <div *ngIf="qty.touched && qty.invalid">
+                                  <p class="alert alert-danger" *ngIf="qty.errors.required">*This field required</p>
+            
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <input type="number" name="price" id="price" class="form-control" placeholder="Enter Price"
+                                  #price="ngModel" ngModel required [(ngModel)]="selectedUser.price">
+                                <div *ngIf="price.touched && price.invalid">
+                                  <p class="alert alert-danger" *ngIf="price.errors.required">*This field required</p>
+            
+                                </div>
+                              </div>
+                            </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

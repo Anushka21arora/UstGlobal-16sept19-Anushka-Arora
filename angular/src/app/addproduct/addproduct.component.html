@@ -1,0 +1,37 @@
+<div class ='alert alert-success mt-4' *ngIf='msg'>{{msg}}</div>
+<!-- <div class ='alert alert-danger' *ngIf='msg'>{{msg}}</div> -->
+
+<div class="col-md-4 offset-md-4 mt-5 card card-body bg-light">
+
+    <h4 style="text-align: center;"><u>Add Product</u></h4>
+
+<div class="card-body">
+    <form [formGroup]="add" (ngSubmit)='addProduct(add)'>
+        <input type="text" name="name" id="name" class="form-control mb-3" formControlName="name" placeholder="Enter Product Name.. ">
+        <span *ngIf="name.touched && name.invalid">
+            <p *ngIf ="name.errors.required" class="text-danger">*Product name is required</p>
+            <p *ngIf ="name.errors.pattern" class="text-danger">*Only Character is Allowed</p>
+        </span>
+        <input type="text" name="category" id="category" class="form-control mb-3" formControlName="category" placeholder="Enter category..">
+        <span *ngIf="category.touched && category.invalid">
+            <p *ngIf ="category.errors.required" class="text-danger">*Category is required</p>
+            <p *ngIf ="category.errors.pattern" class="text-danger">*Only Character is Allowed</p>    
+        </span>
+        <input type="text" name="company" id="company" class="form-control mb-3" formControlName="company" placeholder="Enter company..">
+        <span *ngIf="company.touched && company.invalid">
+            <p *ngIf ="company.errors.required" class="text-danger">*Company is required</p>
+            <p *ngIf ="company.errors.pattern" class="text-danger">*Only Character is Allowed</p>    
+        </span>
+        <input type="number" name="qty" id="qty" class="form-control mb-3" formControlName="qty" placeholder="Enter Quantity">
+        <span *ngIf="qty.touched && qty.invalid">
+            <p *ngIf ="qty.errors.required" class="text-danger">*Quantity is required</p>
+        </span>
+        <input type="number" name="price" id="price" class="form-control mb-3" formControlName="price" placeholder="Enter price">
+        <span *ngIf="price.touched && price.invalid">
+            <p *ngIf ="price.errors.required" class="text-danger">*Price is required</p>
+        </span>
+        <button type="submit" class="float-right btn btn-outline-primary" [disabled]='add.invalid' >ADD</button>
+    </form>
+</div>
+</div>
+

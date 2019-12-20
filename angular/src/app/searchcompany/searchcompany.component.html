@@ -1,0 +1,24 @@
+<form>
+    <input type="search" name="category" id="category" class="col-md-6 offset-3 mt-4 form-control " placeholder="search" (input)='getproduct($event)' />
+    <table class="table table-bordered table-hover mt-4">
+        <thead class="thead-light">
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Company</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </thead>
+        <tbody>
+            <tr *ngFor='let pro of product'>
+                <td>{{pro.pid}}</td>
+                <td>{{pro.name}}</td>
+                <td>{{pro.category}}</td>
+                <td>{{pro.company}}</td>
+                <td>{{pro.qty}}</td>
+                <td>{{pro.price}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="alert alert-danger" *ngIf="msg">{{msg}}</div>
+</form>
