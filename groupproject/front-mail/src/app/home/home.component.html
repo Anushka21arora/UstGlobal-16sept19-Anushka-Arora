@@ -1,0 +1,23 @@
+<img src="https://cdn.pixabay.com/photo/2012/12/20/10/12/michelangelo-71282_1280.jpg" height="1000" width="1550">
+<form action="" class="container"#form="ngForm" (ngSubmit)="login(form)">
+    <h1 class="text-center bg-white text-dark">Mailing System</h1>
+    <div class="form-group">
+        <input type="text" id="email" name="email" class="form-control" placeholder="Enter User Name"#email="ngModel"ngModel required>
+        <div *ngIf="email.touched && email.invalid">
+            <p  class="alert alert-danger" *ngIf="email.errors.required">This field is required!!!!!!</p>            
+    </div>
+    </div>
+    <div class="form-group">
+        <input type="password" id="password" name="password" class="form-control"placeholder="Enter Password"#password="ngModel"ngModel required>
+        <div *ngIf="password.touched && password.invalid">
+            <p  class="alert alert-danger" *ngIf="password.errors.required">This field is required!!!!!!</p>            
+    </div>
+ 
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn-outline-info float-right" [disabled]="form.invalid">Log-In</button>
+        <a href="security" (click)='security()'>Forgot Password?</a>
+    </div>
+    </form>
+ 
+    

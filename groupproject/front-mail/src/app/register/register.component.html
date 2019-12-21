@@ -1,0 +1,40 @@
+<img src="https://cdn.pixabay.com/photo/2012/12/20/10/12/michelangelo-71282_1280.jpg" height="1000" width="1550">
+<form action="" class="container" #form="ngForm" (ngSubmit)="register(form)">
+    <h1 class="text-left bg-white text-dark">Register User</h1>
+    <div class="form-group">
+        <h5>Name</h5>
+        <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name"
+            pattern="^[a-z\d\.]{5,}$" title="More than 5 character with a number" #name="ngModel" ngModel required>
+        <div *ngIf="name.touched && name.invalid">
+            <p class="alert alert-danger" *ngIf="name.errors.required">This field is required!!!!!!</p>
+        </div>
+    </div>
+    <div class="form-group">    
+        <h5>Email</h5>
+        <input type="email" id="email" name="email" class="form-control"
+            placeholder="Enter email" #email="ngModel" ngModel required>
+        <div *ngIf="email.touched && email.invalid">
+            <p class="alert alert-danger" *ngIf="email.errors.required">This field is required!!!!!!</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <h5>Password</h5>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password"
+             title="Six or more characters" #password="ngModel" ngModel required>
+        <div *ngIf="password.touched && password.invalid">
+            <p class="alert alert-danger" *ngIf="password.errors.required">This field is required!!!!!!</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <h5>Security Question</h5>
+        <input type="text" id="ans" name="ans" class="form-control" placeholder="What is your pet name?"
+             #ans="ngModel" ngModel required>
+        <div *ngIf="ans.touched && ans.invalid">
+            <p class="alert alert-danger" *ngIf="ans.errors.required">This field is required!!!!!!</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn-outline-info float-right">Register</button>
+    </div>
+    <!-- [disabled]="form.invalid" -->
+</form>

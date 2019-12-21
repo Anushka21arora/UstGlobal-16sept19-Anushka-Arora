@@ -1,0 +1,15 @@
+<img src="https://cdn.pixabay.com/photo/2012/12/20/10/12/michelangelo-71282_1280.jpg" height="1000" width="1550">
+<form action="" class="container"#form="ngForm" (ngSubmit)="login(form)">
+    <h3 class="text-left bg-white text-dark">What is your pet name?</h3>
+    <div class="form-group">
+        <input type="text" id="ans" name="ans" class="form-control" placeholder="Enter Security Answer"#ans="ngModel"ngModel required>
+        <div *ngIf="ans.touched && ans.invalid">
+            <p  class="alert alert-danger" *ngIf="ans.errors.required">This field is required!!!!!!</p>            
+    </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn-outline-info float-right" [disabled]="form.invalid">submit</button>
+    </div>
+    </form>
+ 
+    
